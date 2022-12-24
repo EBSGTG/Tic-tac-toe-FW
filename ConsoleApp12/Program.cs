@@ -11,7 +11,7 @@ namespace Program
         static void Main(string[] args)
         {
             var playerOne = new GameAccount("Bender");
-            var playerTwo = new GameAccount("Stepan");
+            var playerTwo = new VipAccount("Stepan");
             var g1 = Matchmaking.ReturningClass.MatchmakingG(playerOne, playerTwo);
             g1.Process();
             g1.Process();
@@ -23,7 +23,7 @@ namespace Program
 
         public class GameAccount
         {
-            public string UserName { get; }
+            public string UserName { get; set; }
             public int GamesCount { get; }
 
 
@@ -94,7 +94,13 @@ namespace Program
             public List<Operation> allOperations = new List<Operation>();
         }
 
-
+        public class VipAccount : GameAccount
+        {
+            public VipAccount(string name) : base(name)
+            {
+                UserName = "Vip " + UserName;
+            }
+        }
 
 
 
